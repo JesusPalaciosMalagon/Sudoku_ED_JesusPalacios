@@ -18,10 +18,11 @@ public class Sudoku {
      }
      public void inicializar()
      {
+         //Creamos las variables
          int[][] matriz = new int[9][9];
          int matrizSudoku = 1;
          
-   
+         //Creamos un switch de dos cases con las matrices el case 1 esta fuesto por defecto
         switch (matrizSudoku){
    
             case 2:
@@ -55,7 +56,7 @@ public class Sudoku {
 
             
            }
-     
+     // Creamos metodo toString
      @Override
      public String toString()
      {
@@ -65,22 +66,25 @@ public class Sudoku {
      public void modificarElemento(int fila, int columna, int elemento) throws
     SudokuException 
      {
-         
+         //Aquí iría un el método para modificar elemento.
      }
 
      public void vaciarElemento(int fila, int columna)
      {
-
+         //Aquí iría un el método para vaciar elemento.
      }
      private boolean comprobarFila(int fila, int elemento, int[][] matriz)
      {
-     boolean resultado = false;
+         //Creamos variables
+     boolean resultado = false; //Ponemos el resultado por defecto en false
          int numero = 0;
+         //Creamos bucle for que hará que compruebe las filas de la matriz
      for ( int i = 0; i < matriz.length; i ++ )
+         //Metemos dentro de un if que si el caso se cumple el resultado será true
         if ( matriz[(fila-1)][i] == numero ){
          resultado = true;
         }
-     
+        //En caso de que fuera 0 el resultado sería false
          if ( numero == 0 ) {
              resultado = false;
          }
@@ -89,23 +93,25 @@ public class Sudoku {
      
      private boolean comprobarColumna(int columna, int elemento, int[][] matriz)
      {
-     
-      boolean resultado = false;
+     //Creamos variables
+      boolean resultado = false; //Ponemos el resultado por defecto en false
          int numeroColumna = 0;
-   
+      //Creamos bucle for que hará que compruebe las columnas de nuestra matriz   
       for ( int i = 0; i < matriz.length; i ++ )
+          //Metemos dentro de un if que si el caso se cumple el resultado será true
         if ( matriz[i][(columna-1)] == numeroColumna ){
         resultado = true;
-    }
+        }
      return resultado;
      }
      private boolean comprobarCuadrante(int fila, int columna, int elemento,  int[][] matriz)
      {
+         //Creamos Variables
             int minimo_fila;
             int maximo_fila;
             int minimo_columna;
             int maximo_columna;
-            boolean resultado = false;
+            boolean resultado = false; //Ponemos el resultado por defecto en false
             
             //Asignamos las filas del cuadrante
             
@@ -149,9 +155,16 @@ public class Sudoku {
 
      return resultado;
      }
+     
      private boolean puedoInsertar(int fila, int columna, int elemento)
      {
-     boolean resultado = false;
+         boolean resultado = false; //Ponemos el resultado por defecto en false
+         //Hacemos un condicional if que diga que si elementoe es mayo o igual a 0 y menor que 10 resultado sea true
+        if ( elemento >= 0 && elemento < 10)
+         resultado= true;
+        else //En caso de que no se cumpla resultado es false
+         resultado= false;
+        
      return resultado;
      }
 }
