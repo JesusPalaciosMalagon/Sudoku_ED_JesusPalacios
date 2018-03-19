@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -80,6 +80,10 @@ public class Sudoku {
         if ( matriz[(fila-1)][i] == numero ){
          resultado = true;
         }
+     
+         if ( numero == 0 ) {
+             resultado = false;
+         }
      return resultado;
      }
      
@@ -95,9 +99,53 @@ public class Sudoku {
     }
      return resultado;
      }
-     private boolean comprobarCuadrante(int fila, int columna, int elemento)
+     private boolean comprobarCuadrante(int fila, int columna, int elemento,  int[][] matriz)
      {
-     boolean resultado = true;
+            int minimo_fila;
+            int maximo_fila;
+            int minimo_columna;
+            int maximo_columna;
+            boolean resultado = false;
+            
+            //Asignamos las filas del cuadrante
+            
+           if ( fila > 0 && fila < 4){
+            minimo_fila = 0;
+            maximo_fila = 2;
+           }
+           else if ( fila > 3 && fila < 7 ){
+            minimo_fila = 3;
+            maximo_fila = 5;
+           }
+           else{
+            minimo_fila = 6;
+            maximo_fila = 8;
+           }
+            
+           //Asignamos las columnas del cuadrante
+           
+           if ( columna > 0 && columna < 4){
+            minimo_columna = 0;
+            maximo_columna = 2;
+           }else if ( columna > 3 && columna < 7 ){
+            minimo_columna = 3;
+            maximo_columna = 5;
+           }else{
+            minimo_columna = 6;
+            maximo_columna = 8;
+           }
+           
+           //Recorremos el rango del cuadrante para buscar el valor
+           
+           for ( int f = minimo_fila; f <= maximo_fila; f++ )
+            for ( int i = minimo_columna; i <= maximo_columna; i++)
+                if ( matriz[f][i] == elemento ){
+                    resultado = true;
+                }
+                 //En caso de que sea 0 resultado será falso
+                 if ( elemento == 0 ){
+                     resultado = false;
+                 }
 
      return resultado;
      }
